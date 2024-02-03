@@ -1,0 +1,113 @@
+body {
+  background-color: white;
+}
+
+.calculator {
+  height: 100vh;
+  background-color: #f3e8f2;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator h3 {
+  font-family: "Courier New", Courier, monospace;
+  margin: 20px 0px 20px 0px;
+  font-size: 40px;
+  text-align: center;
+  color: #000000;
+}
+
+.calculator-box {
+  border: 2px solid #47476b;
+  padding: 5px;
+  background: #000000;
+  width: 352px;
+  position: relative;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.calculator #history {
+  font-family: digital;
+  font-size: 22px;
+  color: rgb(255, 255, 255);
+  text-align: right;
+  vertical-align: text-top;
+  line-height: 40px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.calculator #output {
+  font-size: 29px;
+  font-family: digital;
+  color: rgb(255, 255, 255);
+  text-align: right;
+  line-height: 50px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px;
+}
+
+.calculator #display {
+  height: 150px;
+  width: auto;
+  position: relative;
+  background-color: #555555;
+
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  margin: 15px;
+}
+
+.calculator button {
+  position: relative;
+  height: 65px;
+  width: 80px;
+  color: #fff;
+  background: #555555;
+  outline: 1px solid rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  font-family: Share Tech Mono, monospace;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 4px;
+
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.calculator button:active {
+  background-color: #ebdbe4;
+  color: black;
+  outline: 0.05em solid rgb(255, 0, 0);
+  z-index: 2;
+}
+
+.calculator .jumbo {
+  width: 168px;
+  margin: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.calculator #equals {
+  position: absolute;
+  height: 138px;
+  margin: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#divide,
+#multiply,
+#subtract,
+#add,
+#equals {
+  background-color: hsl(0, 0%, 75%);
+}
+
+#clear {
+  background-color: rgb(255, 61, 61);
+}
