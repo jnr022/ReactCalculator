@@ -1,7 +1,7 @@
 import React, {
-  useState,
-  useEffect
-} from "https://cdn.skypack.dev/react@17.0.1";
+useState,
+useEffect } from
+"https://cdn.skypack.dev/react@17.0.1";
 import ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
 
 function Calculator() {
@@ -9,22 +9,22 @@ function Calculator() {
   const [result, setResult] = useState(0);
   const [history, setHistory] = useState([]);
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = e => {
     const value = typeof e === "string" ? e : e.target.value;
     const lastChar = input.charAt(input.length - 1);
 
     if (
-      (input.length === 0 && ["+", "*", "/"].includes(value)) ||
-      (["+", "-", "*", "/"].includes(lastChar) &&
-        ["+", "-", "*", "/"].includes(value)) ||
-      (lastChar === "." && value === ".") ||
-      (lastChar === "." && ["+", "-", "*", "/"].includes(value)) ||
-      (["+", "-", "*", "/"].includes(lastChar) && value === ".")
-    ) {
+    input.length === 0 && ["+", "*", "/"].includes(value) ||
+    ["+", "-", "*", "/"].includes(lastChar) &&
+    ["+", "-", "*", "/"].includes(value) ||
+    lastChar === "." && value === "." ||
+    lastChar === "." && ["+", "-", "*", "/"].includes(value) ||
+    ["+", "-", "*", "/"].includes(lastChar) && value === ".")
+    {
       return;
     }
 
-    setInput((prevInput) => prevInput + value);
+    setInput(prevInput => prevInput + value);
   };
 
   useEffect(() => {
@@ -34,33 +34,33 @@ function Calculator() {
     };
   });
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = event => {
     const keyPressed = event.key;
     const keyCode = event.keyCode;
     const validKeys = [
-      "0",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "+",
-      "-",
-      "*",
-      "/",
-      ".",
-      "=",
-      "Enter",
-      "Escape"
-    ];
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "+",
+    "-",
+    "*",
+    "/",
+    ".",
+    "=",
+    "Enter",
+    "Escape"];
+
     if (
-      validKeys.includes(keyPressed) ||
-      validKeys.includes(keyCode.toString())
-    ) {
+    validKeys.includes(keyPressed) ||
+    validKeys.includes(keyCode.toString()))
+    {
       event.preventDefault();
       if (keyPressed === "Enter" || keyCode === 13) {
         if (input.trim() !== "") {
@@ -77,9 +77,9 @@ function Calculator() {
   const handleCalculate = () => {
     let newResult;
     if (
-      !input.trim() ||
-      ["+", "-", "*", "/"].includes(input.charAt(input.length - 1))
-    ) {
+    !input.trim() ||
+    ["+", "-", "*", "/"].includes(input.charAt(input.length - 1)))
+    {
       return;
     }
     try {
@@ -89,19 +89,19 @@ function Calculator() {
       newResult = "Invalid expression";
       setResult(newResult);
     }
-    setHistory((prevHistory) => [
-      ...prevHistory.slice(-1),
-      { input, result: newResult }
-    ]);
+    setHistory(prevHistory => [
+    ...prevHistory.slice(-1),
+    { input, result: newResult }]);
+
     setInput("");
   };
 
-  const handleDecimal = (e) => {
+  const handleDecimal = e => {
     const value = e.target.value;
 
     // Check if input already contains a decimal point
     if (!input.includes(".")) {
-      setInput((prevInput) => prevInput + value);
+      setInput(prevInput => prevInput + value);
     }
   };
 
@@ -111,99 +111,99 @@ function Calculator() {
     setHistory([]);
   };
 
-  return (
-    <div className="calculator">
-      <h3>Calculator</h3>
-      <div className="calculator-box">
-        <div id="display">
-          <History historyValue={history} />
-          <Output resultValue={input || result} />
-        </div>
-        <Buttons
-          id="buttons"
-          numbers={handleButtonClick}
-          operators={handleButtonClick}
-          decimal={handleDecimal}
-          clear={handleClear}
-          handleCalculate={handleCalculate}
-        />
-      </div>
-    </div>
-  );
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "calculator" }, /*#__PURE__*/
+    React.createElement("h3", null, "Calculator"), /*#__PURE__*/
+    React.createElement("div", { className: "calculator-box" }, /*#__PURE__*/
+    React.createElement("div", { id: "display" }, /*#__PURE__*/
+    React.createElement(History, { historyValue: history }), /*#__PURE__*/
+    React.createElement(Output, { resultValue: input || result })), /*#__PURE__*/
+
+    React.createElement(Buttons, {
+      id: "buttons",
+      numbers: handleButtonClick,
+      operators: handleButtonClick,
+      decimal: handleDecimal,
+      clear: handleClear,
+      handleCalculate: handleCalculate }))));
+
+
+
+
 }
 
-const Buttons = (props) => {
-  return (
-    <div className="buttons">
-      <button id="clear" value="AC" className="jumbo" onClick={props.clear}>
-        AC
-      </button>
-      <button id="divide" value="/" onClick={props.operators}>
-        /
-      </button>
-      <button id="multiply" value="*" onClick={props.operators}>
-        x
-      </button>
-      <button id="seven" value="7" onClick={props.numbers}>
-        7
-      </button>
-      <button id="eight" value="8" onClick={props.numbers}>
-        8
-      </button>
-      <button id="nine" value="9" onClick={props.numbers}>
-        9
-      </button>
-      <button id="subtract" value="-" onClick={props.operators}>
-        -
-      </button>
-      <button id="four" value="4" onClick={props.numbers}>
-        4
-      </button>
-      <button id="five" value="5" onClick={props.numbers}>
-        5
-      </button>
-      <button id="six" value="6" onClick={props.numbers}>
-        6
-      </button>
-      <button id="add" value="+" onClick={props.operators}>
-        +
-      </button>
-      <button id="one" value="1" onClick={props.numbers}>
-        1
-      </button>
-      <button id="two" value="2" onClick={props.numbers}>
-        2
-      </button>
-      <button id="three" value="3" onClick={props.numbers}>
-        3
-      </button>
-      <button id="equals" value="=" onClick={props.handleCalculate}>
-        =
-      </button>
+const Buttons = props => {
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "buttons" }, /*#__PURE__*/
+    React.createElement("button", { id: "clear", value: "AC", className: "jumbo", onClick: props.clear }, "AC"), /*#__PURE__*/
 
-      <button id="zero" value="0" className="jumbo" onClick={props.numbers}>
-        0
-      </button>
 
-      <button id="decimal" value="." onClick={props.decimal}>
-        .
-      </button>
-    </div>
-  );
+    React.createElement("button", { id: "divide", value: "/", onClick: props.operators }, "/"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "multiply", value: "*", onClick: props.operators }, "x"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "seven", value: "7", onClick: props.numbers }, "7"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "eight", value: "8", onClick: props.numbers }, "8"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "nine", value: "9", onClick: props.numbers }, "9"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "subtract", value: "-", onClick: props.operators }, "-"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "four", value: "4", onClick: props.numbers }, "4"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "five", value: "5", onClick: props.numbers }, "5"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "six", value: "6", onClick: props.numbers }, "6"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "add", value: "+", onClick: props.operators }, "+"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "one", value: "1", onClick: props.numbers }, "1"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "two", value: "2", onClick: props.numbers }, "2"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "three", value: "3", onClick: props.numbers }, "3"), /*#__PURE__*/
+
+
+    React.createElement("button", { id: "equals", value: "=", onClick: props.handleCalculate }, "="), /*#__PURE__*/
+
+
+
+    React.createElement("button", { id: "zero", value: "0", className: "jumbo", onClick: props.numbers }, "0"), /*#__PURE__*/
+
+
+
+    React.createElement("button", { id: "decimal", value: ".", onClick: props.decimal }, ".")));
+
+
+
+
 };
 
-const History = (props) => {
-  return (
-    <div id="history">
-      {props.historyValue.map((item, index) => (
-        <div key={index}>{`${item.input} = ${item.result}`}</div>
-      ))}
-    </div>
-  );
+const History = props => {
+  return /*#__PURE__*/(
+    React.createElement("div", { id: "history" },
+    props.historyValue.map((item, index) => /*#__PURE__*/
+    React.createElement("div", { key: index }, `${item.input} = ${item.result}`))));
+
+
+
 };
 
-const Output = (props) => {
-  return <div id="output">{props.resultValue}</div>;
+const Output = props => {
+  return /*#__PURE__*/React.createElement("div", { id: "output" }, props.resultValue);
 };
 
-ReactDOM.render(<Calculator />, document.getElementById("root"));
+ReactDOM.render( /*#__PURE__*/React.createElement(Calculator, null), document.getElementById("root"));
